@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+  mysqldb:
+    container_name: mysqldb
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db-weather'
+      MYSQL_USER: 'lalo22'
+      MYSQL_PASSWORD: 'watherProject'
+      MYSQL_ROOT_PASSWORD: 'watherProject'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    networks:
+      - custommer-app-db-network
+    volumes:
+      - my-db-mysql:/var/lib/mysql
+volumes:
+  my-db-mysql:
+networks:
+  custommer-app-db-network:
