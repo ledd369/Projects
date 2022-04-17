@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+
+  service-weather:
+    container_name: service-weather
+    build: .
+    image: service-weather:1.0.0
+    restart: always
+    ports:
+      - 8081:8080
+    networks:
+      - docker_custommer-app-db-network
+    environment:
+      MYSQL_HOST: mysqldb
+networks:
+  docker_custommer-app-db-network:
+    external: true
